@@ -2,11 +2,14 @@
 import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
+import { Eye, EyeOff } from 'lucide-react';
 
 function Login() {
     const router = useRouter();
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    const [showPassword, setShowPassword] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
 
     useEffect(() => {
         // Disable scrolling on mount
@@ -85,37 +88,50 @@ function Login() {
                             className="mx-auto"
                         />
                     </div>
-                    <form onSubmit={handleSubmit}>
-                        <div className="mb-6">
+                    <form onSubmit={handleSubmit} className="space-y-6">
+                        <div>
                             <input
                                 type="text"
                                 id="username"
                                 value={username}
                                 onChange={(e) => setUsername(e.target.value)}
-                                className="w-full px-4 py-2 bg-gray-200 text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-red"
+                                className="w-full px-4 py-3 rounded-md bg-[#f6f7fa] border border-[#f6f7fa] focus:outline-none focus:ring-2 focus:ring-[#00e5c7]"
                                 placeholder="Username"
                                 required
                             />
                         </div>
-                        <div className="mb-6">
+                        <div className="relative">
                             <input
-                                type="password"
+                                type={showPassword ? "text" : "password"}
                                 id="password"
                                 value={password}
                                 onChange={(e) => setPassword(e.target.value)}
-                                className="w-full px-4 py-2 bg-gray-200 text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-red"
+                                className="w-full px-4 py-3 rounded-md bg-[#f6f7fa] border border-[#f6f7fa] focus:outline-none focus:ring-2 focus:ring-[#00e5c7]"
                                 placeholder="Password"
                                 required
                             />
-                        </div>
-                        <div>
                             <button
-                                type="submit"
-                                className="w-full py-3 bg-gradient-to-r from-[#01D4CF] to-[#03E8B9]  text-white font-semibold rounded-md hover:bg-red-600 transition duration-200"
+                                type="button"
+                                onClick={() => setShowPassword(!showPassword)}
+                                className="absolute right-3 top-1/2 transform -translate-y-1/2 text-[#9d9fa0]"
+                                aria-label="Show password"
                             >
-                                Login
+                                {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
                             </button>
                         </div>
+                        <button
+                            type="submit"
+                            className="w-full py-3 px-4 bg-[#00e5c7] text-white font-medium rounded-md hover:bg-opacity-90 transition-colors"
+                            disabled={isLoading}
+                        >
+                            {isLoading ? (
+                                <div className="flex justify-center">
+                                    <div className="h-5 w-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                                </div>
+                            ) : (
+                                "Log in"
+                            )}
+                        </button>
                     </form>
                     <div className="mt-4 text-right">
                         <a

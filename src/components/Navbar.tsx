@@ -21,6 +21,7 @@ const NavbarLayout = ({ children }: { children: React.ReactNode }) => {
       const hiddenBarPaths = {
         signin: '/signin',
         signup: '/signup',
+        ori: '/',
       };
 
       // Bar visibility
