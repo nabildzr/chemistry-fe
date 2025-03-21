@@ -3,8 +3,19 @@
 import Image from "next/image"
 import { CircularProgressbar } from "react-circular-progressbar"
 import "react-circular-progressbar/dist/styles.css"
+import { useState } from "react"
+import { useInView } from "react-intersection-observer"
 
 export default function Dashboard() {
+  const [progress, setProgress] = useState(0)
+  const { ref, inView } = useInView({
+    triggerOnce: true,
+    onChange: (inView) => {
+      if (inView) {
+        setProgress(75)
+      }
+    },
+  })
   return (
     <div className="min-h-screen bg-white">
 
@@ -13,8 +24,8 @@ export default function Dashboard() {
         <h1 className="text-3xl font-bold text-[#1b1b1b] mb-8">Dashboard</h1>
 
         {/* Total Card */}
-        <div className="bg-[#01d5ce] rounded-xl p-8 mb-8 text-center">
-          <h2 className="text-white text-2xl font-medium mb-2">Total Keuangan Kelas</h2>
+        <div className="bg-gradient-to-t from-[#06FF9F] to-[#00D2D2] from-10% to-100% rounded-xl p-8 mb-8 flex flex-col items-center justify-center">
+          <h2 className="text-white text-2xl font-medium mb-4">Total Keuangan Kelas</h2>
           <p className="text-white text-6xl font-bold">Rp 1.500.000</p>
         </div>
 
@@ -26,14 +37,23 @@ export default function Dashboard() {
             <p className="text-gray-500 mb-6">Liburan ke Bira</p>
 
             <div className="flex justify-center">
-              <div className="w-48 h-48">
+              <div className="w-48 h-48 relative" ref={ref}>
+                <svg style={{ height: 0, position: 'absolute' }}>
+                  <defs>
+                    <linearGradient id="goalGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" stopColor="#00D2D2" />
+                      <stop offset="100%" stopColor="#06FF9F" />
+                    </linearGradient>
+                  </defs>
+                </svg>
                 <CircularProgressbar
-                  value={75}
-                  text={`75%`}
+                  value={progress}
+                  text={`${progress}%`}
                   styles={{
                     path: {
-                      stroke: "#01d5ce",
+                      stroke: "url(#goalGradient)",
                       strokeLinecap: "round",
+                      transition: 'stroke-dashoffset 0.5s ease 0s',
                     },
                     trail: {
                       stroke: "#f7f7f7",

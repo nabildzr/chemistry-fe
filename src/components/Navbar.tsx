@@ -33,7 +33,7 @@ const NavbarLayout = ({ children }: { children: React.ReactNode }) => {
 
   return (
    <>
-   {showBar &&  <div className="fixed w-full px-6 bg-white border-[#EEF0F7] border-b-2">
+   {showBar &&  <div className="sticky top-0 w-full px-6 bg-white border-[#EEF0F7] border-b-2">
       <nav className="flex justify-between items-center py-4">
         <Link href={"/"} className="text-lg font-bold flex items-center rubik-mono-one-regular gap-2">
           <Image src="/assets/chemistry-logo.png" alt="Logo" width={50} height={50} className="" />
