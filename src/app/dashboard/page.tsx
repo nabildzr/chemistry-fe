@@ -5,6 +5,7 @@ import { CircularProgressbar } from "react-circular-progressbar"
 import "react-circular-progressbar/dist/styles.css"
 import { useState } from "react"
 import { useInView } from "react-intersection-observer"
+import Link from "next/link"
 
 export default function Dashboard() {
   const [progress, setProgress] = useState(0)
@@ -32,7 +33,8 @@ export default function Dashboard() {
         {/* Stats Cards */}
         <div className="grid md:grid-cols-2 gap-6">
           {/* Goal Card */}
-          <div className="bg-white rounded-xl p-6 border border-gray-200 shadow-sm">
+         <Link href={"/goal"}>
+         <div className="bg-white rounded-xl p-6 border border-gray-200 shadow-sm hover:bg-gray-50 hover:shadow-2xl duration-300">
             <h2 className="text-[#1b1b1b] text-3xl font-bold mb-1">Goal</h2>
             <p className="text-gray-500 mb-6">Liburan ke Bira</p>
 
@@ -68,6 +70,7 @@ export default function Dashboard() {
               </div>
             </div>
           </div>
+         </Link>
 
           {/* Payment Card */}
           <div className="bg-white rounded-xl p-6 border border-gray-200 shadow-sm">

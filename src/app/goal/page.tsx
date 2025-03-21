@@ -6,6 +6,7 @@ import "react-circular-progressbar/dist/styles.css";
 import { useState } from "react";
 import { useInView } from "react-intersection-observer";
 import { ArrowLeft, ArrowRightLeft, Calendar, ChevronLeft } from "lucide-react";
+import Link from "next/link";
 
 export default function Dashboard() {
   const [progress, setProgress] = useState(0);
@@ -21,18 +22,35 @@ export default function Dashboard() {
     <div className="min-h-screen bg-white">
       {/* Main Content */}
       <main className="container mx-auto px-6 py-8">
+        {/* title */}
         <h1 className="text-3xl font-bold text-[#1b1b1b] mb-8 flex items-center">
-          <ChevronLeft size={40} /> Goal
+          {/* path 1 */}
+          <Link
+            href={"/dashboard"}
+            className="flex transition-colors duration-200  hover:text-[#525F7F]"
+          >
+            <ChevronLeft
+              size={40}
+              className="p-2  rounded-full cursor-pointer"
+            />
+            Dashboard
+          </Link>
+          {/*  */}
+          <div className="flex">
+            <ChevronLeft size={40} className="p-2 " />
+            Goal
+          </div>
         </h1>
 
         {/* Stats Cards */}
         <div className="gap-6 mb-6">
-          <div className="bg-white rounded-xl p-6 border border-gray-200 shadow-sm">
-            <h2 className="text-[#1b1b1b] text-3xl font-bold mb-1">Goal</h2>
-            <p className="text-gray-500 mb-6">Liburan ke Bira</p>
+          <div className="bg-white rounded-xl p-6 border border-gray-200 shadow-sm gap-10 flex flex-col">
+            <h2 className="text-[#1b1b1b] text-4xl flex justify-center  font-bold mb-1">
+              Liburan ke Bira
+            </h2>
 
+            {/* Comparison */}
             <div className="grid grid-cols-2">
-              
               {/* Circular Progress */}
               <div className="flex justify-center">
                 <div className="w-48 h-48 relative" ref={ref}>
@@ -72,6 +90,12 @@ export default function Dashboard() {
                   />
                 </div>
               </div>
+
+              <div className="flex flex-col jsutify-center text-center justify-center">
+                <span className="text-4xl font-bold">Rp. 1.500.000</span>
+                <span className="text-4xl font-bold">dari</span>
+                <span className="text-4xl font-bold">Rp. 2.500.000</span>
+              </div>
             </div>
           </div>
         </div>
@@ -88,7 +112,7 @@ export default function Dashboard() {
             </div>
 
             <div className=" mt-4">
-              <p className="text-5xl font-bold ">1 Agustus, 2025</p>
+              <p className="text-4xl font-bold ">1 Agustus, 2025</p>
             </div>
           </div>
 
@@ -99,7 +123,7 @@ export default function Dashboard() {
             </div>
 
             <div className=" mt-4">
-              <p className="text-5xl font-bold ">1 Agustus, 2025</p>
+              <p className="text-4xl font-bold ">1 Agustus, 2025</p>
             </div>
           </div>
         </div>
