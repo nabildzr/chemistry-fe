@@ -26,7 +26,7 @@ function Login() {
 
         const credentials = {
             admin: { username: 'admin12345', password: '123456789', redirect: '/admin' },
-            siswa: { username: 'siswa123', password: '123456789', redirect: '/homepage' },
+            siswa: { username: 'siswa123', password: '123456789', redirect: '/dashboard' },
         };
 
         if (
