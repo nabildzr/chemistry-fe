@@ -22,6 +22,7 @@ const NavbarLayout = ({ children }: { children: React.ReactNode }) => {
         signin: '/signin',
         signup: '/signup',
         ori: '/',
+        notFound: '/not-found',
       };
 
       // Bar visibility
