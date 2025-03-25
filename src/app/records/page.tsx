@@ -1,11 +1,18 @@
-import React from 'react'
+import TitleWithPath from "@/components/TitleWithPathArray";
+import UserPageLayout from "@/components/userPageLayout";
+import React from "react";
 
 const Page = () => {
   return (
-    <div>
-      
-    </div>
-  )
-}
+    <>
+      <UserPageLayout>
+        <TitleWithPath
+          currentPath={"Records"}
+          previousPaths={["Dashboard", "Wallet"]}
+        />
+      </UserPageLayout>
+    </>
+  );
+};
 
-export default Page
+export default Page;
