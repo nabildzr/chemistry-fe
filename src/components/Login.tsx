@@ -133,20 +133,15 @@ function Login() {
                             )}
                         </button>
                     </form>
-                    <div className="mt-4 text-right">
+                    {/* <div className="mt-4 text-right">
                         <a
                             href="/forgot-password"
                             className="text-sm text-gray hover:underline cursor-pointer"
                         >
                             Forgot Password?
                         </a>
-                    </div>
+                    </div> */}
                 </div>
-                {/* Powered by Telkom section */}
-                {/* <div className="absolute bottom-8 w-full text-center flex justify-center items-center space-x-4">
-                    <Image src="/assets/PoweredBy.png" alt="Powered by Logo" width={80} height={10} />
-                    <Image src="/assets/Telkom.schools.png" alt="Telkom Logo" width={80} height={10} />
-                </div> */}
             </div>
         </div>
     );
