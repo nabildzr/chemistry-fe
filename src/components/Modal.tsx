@@ -44,10 +44,8 @@ const Modal = ({ isOpen, onClose, children, title }: ModalProps) => {
           </button>
         </div>
 
-        <hr className="border-t border-gray-300 my-3" />
-        <div className="flex flex-col ">
-        {children}
-        </div>
+        <hr className="border-t border-gray-300 mt-4" />
+        <div className="flex flex-col ">{children}</div>
       </div>
     </div>
   );

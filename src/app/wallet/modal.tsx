@@ -13,7 +13,7 @@ const InWalletModal = ({
       <Modal isOpen={isDepositModalOpen} onClose={closeModal} title="Deposit">
         <form action="">
             <div className="">
-              <p className="font-bold text-sm">Nominal</p>
+              <p className="font-bold text-sm mt-2">Nominal</p>
               <input
                 type="number"
                 className="border text-[#525F7F] border-gray-300 rounded-lg p-2 w-full mt-2 bg-gray-100 focus:outline-none focus:ring-0"
@@ -22,7 +22,7 @@ const InWalletModal = ({
             </div>
 
             <div className="">
-              <p className="font-bold text-sm">Catatan/Pesan</p>
+              <p className="font-bold text-sm mt-2">Catatan/Pesan</p>
               <input
                 type="text"
                 className="border text-[#525F7F] border-gray-300 rounded-lg p-2 w-full mt-2 bg-gray-100 focus:outline-none focus:ring-0"
@@ -39,7 +39,7 @@ const InWalletModal = ({
       <Modal isOpen={isWithdrawModalOpen} onClose={closeModal} title="Withdraw">
         <form action="">
             <div className="">
-              <p className="font-bold text-sm">Nominal</p>
+              <p className="font-bold text-sm mt-2">Nominal</p>
               <input
                 type="number"
                 className="border text-[#525F7F] border-gray-300 rounded-lg p-2 w-full mt-2 bg-gray-100 focus:outline-none focus:ring-0"
@@ -48,7 +48,7 @@ const InWalletModal = ({
             </div>
 
             <div className="">
-              <p className="font-bold text-sm">Catatan/Pesan</p>
+              <p className="font-bold text-sm mt-2">Catatan/Pesan</p>
               <input
                 type="text"
                 className="border text-[#525F7F] border-gray-300 rounded-lg p-2 w-full mt-2 bg-gray-100 focus:outline-none focus:ring-0"

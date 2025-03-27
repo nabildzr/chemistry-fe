@@ -219,7 +219,7 @@ const Page = () => {
                   </p>
                   <p className="text-1xl md:text-xl">21 Maret 2024</p>
                 </div>
-                <p className="text-1xl md:text-2xl">Rp140.000</p>
+                <p className="text-1xl  hidden md:block md:text-2xl">Rp140.000</p>
               </div>
             </div>
           </GridCard>
@@ -252,7 +252,7 @@ const Page = () => {
                   <p className="font-bold text-1xl md:text-2xl">Beli Tisu</p>
                   <p className="text-1xl md:text-xl">21 Maret 2024</p>
                 </div>
-                <p className="text-1xl md:text-2xl">Rp140.000</p>
+                <p className="text-1xl hidden md:block md:text-2xl">Rp140.000</p>
               </div>
               <div className="flex justify-between items-center">
                 <div>
@@ -261,7 +261,7 @@ const Page = () => {
                   </p>
                   <p className="text-1xl md:text-xl">18 Maret 2024</p>
                 </div>
-                <p className="text-1xl md:text-2xl">Rp14.000</p>
+                <p className="text-1xl hidden md:block md:text-2xl">Rp14.000</p>
               </div>
             </div>
           </GridCard>
