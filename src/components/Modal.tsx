@@ -36,9 +36,12 @@ const Modal = ({ isOpen, onClose, children, title }: ModalProps) => {
     };
   }, [onClose]);
 
+
+
+
   return (
     <div
-      className={`fixed inset-0 z-50 flex items-center justify-center bg-[#0000007c] transition-opacity duration-300 ease-in-out ${
+      className={`fixed inset-0 z-91 flex items-center justify-center bg-[#0000007c] transition-opacity duration-300 ease-in-out ${
         isOpen ? "opacity-100 visible" : "opacity-0 invisible"
       }`}
       onClick={handleOverlayClick}

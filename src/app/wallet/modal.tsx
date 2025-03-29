@@ -18,6 +18,7 @@ const InWalletModal = ({
               type="number"
               className="border text-[#525F7F] border-gray-300 rounded-lg p-2 w-full mt-2 bg-gray-100 focus:outline-none focus:ring-0"
               placeholder="Enter amount"
+              autoFocus
             />
           </div>
 
@@ -44,6 +45,7 @@ const InWalletModal = ({
               type="number"
               className="border text-[#525F7F] border-gray-300 rounded-lg p-2 w-full mt-2 bg-gray-100 focus:outline-none focus:ring-0"
               placeholder="Enter amount"
+              autoFocus
             />
           </div>
 

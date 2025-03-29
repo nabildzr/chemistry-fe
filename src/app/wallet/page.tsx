@@ -10,6 +10,7 @@ import Image from "next/image";
 import Navbar from "@/components/Navbar";
 import Modal from "@/components/Modal";
 import InWalletModal from "./modal";
+import IncomeAndExpense from "./incomeAndExpense";
 
 const Page = () => {
   const pathname = usePathname();
@@ -74,7 +75,7 @@ const Page = () => {
                 {/* deposit */}
                 <button
                   onClick={() => setDepositModalOpen(true)}
-                  className="flex flex-col items-center justify-center duration-500 p-3 hover:bg-white group rounded-lg hover:rounded-2xl relative"
+                  className="flex flex-col items-center justify-center cursor-pointer duration-500 p-3 hover:bg-white group rounded-lg hover:rounded-2xl relative"
                 >
                   <div className="relative w-[75px] h-[75px] mb-4">
                     <div
@@ -100,7 +101,7 @@ const Page = () => {
                 {/* withdraw */}
                 <button
                   onClick={() => setWithdrawModalOpen(true)}
-                  className="flex flex-col items-center justify-center hover:bg-white duration-500 p-3 group rounded-lg hover:rounded-2xl relative"
+                  className="flex flex-col items-center justify-center cursor-pointer hover:bg-white duration-500 p-3 group rounded-lg hover:rounded-2xl relative"
                 >
                   <div className="relative w-[75px] h-[75px] mb-4">
                     <div
@@ -129,7 +130,7 @@ const Page = () => {
             <div className="sm:hidden flex  gap-6 mt-5">
               <button
                 onClick={() => setDepositModalOpen(true)}
-                className="flex flex-col items-center justify-center duration-500 p-3 bg-gradient-to-t from-[#66ffc4] to-[#00D2D2]  from-5% to-110% group rounded-lg hover:rounded-2xl relative"
+                className="flex flex-col cursor-pointer items-center justify-center duration-500 p-3 bg-gradient-to-t from-[#66ffc4] to-[#00D2D2]  from-5% to-110% group rounded-lg hover:rounded-2xl relative"
               >
                 <div className="relative w-[40px] h-[40px] mb-4">
                   <div
@@ -155,7 +156,7 @@ const Page = () => {
               {/* withdraw */}
               <button
                 onClick={() => setWithdrawModalOpen(true)}
-                className="flex flex-col items-center justify-center bg-gradient-to-t from-[#66ffc4] to-[#00D2D2] from-5% to-110% duration-500 p-3 group rounded-lg hover:rounded-2xl relative"
+                className="flex flex-col items-center cursor-pointer justify-center bg-gradient-to-t from-[#66ffc4] to-[#00D2D2] from-5% to-110% duration-500 p-3 group rounded-lg hover:rounded-2xl relative"
               >
                 <div className="relative w-[35px] h-[35px] mb-4">
                   <div
@@ -189,82 +190,7 @@ const Page = () => {
         </div>
 
         <div className="grid grid-cols-2 gap-5 md:gap-10 items-start">
-          <GridCard padding="p-3 md:p-6">
-            <div className="font-bold text-1xl md:text-3xl flex justify-between items-center">
-              Pemasukan{" "}
-              <Link href="/">
-                <ChevronRight
-                  className="hover:text-[#525F7F] hidden md:block duration-300"
-                  size={30}
-                />
-                <ChevronRight
-                  className="hover:text-[#525F7F] block md:hidden duration-300"
-                  size={20}
-                />
-              </Link>
-            </div>
-
-            <h2 className="font-bold text-2xl md:text-3xl text-[#888988]">
-              Maret
-            </h2>
-
-            <hr className="border-t my-3" />
-
-            {/* Content */}
-            <div className="">
-              <div className="flex justify-between items-center">
-                <div>
-                  <p className="font-bold text-1xl md:text-2xl">
-                    Joshua Timothy
-                  </p>
-                  <p className="text-1xl md:text-xl">21 Maret 2024</p>
-                </div>
-                <p className="text-1xl  hidden md:block md:text-2xl">Rp140.000</p>
-              </div>
-            </div>
-          </GridCard>
-
-          <GridCard padding="p-3 md:p-6">
-            <div className="font-bold text-1xl md:text-3xl flex justify-between items-center">
-              Pengeluaran{" "}
-              <Link href="/">
-                <ChevronRight
-                  className="hover:text-[#525F7F] hidden md:block duration-300"
-                  size={30}
-                />
-                <ChevronRight
-                  className="hover:text-[#525F7F] block md:hidden duration-300"
-                  size={20}
-                />
-              </Link>
-            </div>
-
-            <h2 className="font-bold text-2xl md:text-3xl text-[#888988]">
-              April
-            </h2>
-
-            <hr className="border-t my-3" />
-
-            {/* Content */}
-            <div className="">
-              <div className="flex justify-between items-center">
-                <div>
-                  <p className="font-bold text-1xl md:text-2xl">Beli Tisu</p>
-                  <p className="text-1xl md:text-xl">21 Maret 2024</p>
-                </div>
-                <p className="text-1xl hidden md:block md:text-2xl">Rp140.000</p>
-              </div>
-              <div className="flex justify-between items-center">
-                <div>
-                  <p className="font-bold text-1xl md:text-2xl">
-                    Beli Perlengkapan
-                  </p>
-                  <p className="text-1xl md:text-xl">18 Maret 2024</p>
-                </div>
-                <p className="text-1xl hidden md:block md:text-2xl">Rp14.000</p>
-              </div>
-            </div>
-          </GridCard>
+          <IncomeAndExpense/>
         </div>
       </UserPageLayout>
 
