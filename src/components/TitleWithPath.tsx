@@ -11,7 +11,7 @@ const TitleWithPath = ({ currentPath, previousPath }: TitleWithPathProps) => {
   const lowerCasePreviousPath = previousPath?.toLowerCase();
 
   return (
-    <h1 className="t-3xl font-bold text-[#1b1b1b] mb-8 flex items-center">
+    <h1 className={` font-bold text-[#1b1b1b] mb-8 flex items-center`}>
       {/* path 1 */}
       <Link
         href={`/${lowerCasePreviousPath}`}
@@ -19,7 +19,7 @@ const TitleWithPath = ({ currentPath, previousPath }: TitleWithPathProps) => {
       >
         <ChevronLeft
           size={40}
-          className="p-2 text-3xl  rounded-full cursor-pointer"
+          className="p-2  rounded-full cursor-pointer"
         />
         {previousPath}
       </Link>

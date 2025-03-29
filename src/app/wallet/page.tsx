@@ -43,9 +43,12 @@ const Page = () => {
                   className="group-hover:text-black duration-300"
                 />
               </Link>
-              <h2 className="font-bold text-sm md:text-2xl md:hidden flex text-secondary  items-center ">
-                <ChevronRight size={30} />
-              </h2>
+
+              <Link href={"/records"} className="font-bold text-sm md:text-2xl md:hidden flex text-secondary  items-center ">
+                <h2 className="">
+                  <ChevronRight size={30} />
+                </h2>
+              </Link>
             </div>
 
             {/* Manager */}
@@ -190,7 +193,7 @@ const Page = () => {
         </div>
 
         <div className="grid grid-cols-2 gap-5 md:gap-10 items-start">
-          <IncomeAndExpense/>
+          <IncomeAndExpense />
         </div>
       </UserPageLayout>
 

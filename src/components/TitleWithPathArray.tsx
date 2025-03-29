@@ -17,11 +17,11 @@ const TitleWithPath = ({ currentPath, previousPaths }: TitleWithPathProps) => {
           <React.Fragment key={index}>
             <Link
               href={`/${lowerCasePath}`}
-              className="flex transition-colors text-2xl duration-200 items-center hover:text-[#525F7F]"
+              className="flex transition-colors text-base md:text-2xl  duration-200 items-center hover:text-[#525F7F]"
             >
               <ChevronLeft
                 size={40}
-                className="p-2 text-3xl rounded-full cursor-pointer"
+                className="p-2 text-xl md:text-2xl rounded-full cursor-pointer"
               />
               {path}
             </Link>
@@ -30,7 +30,7 @@ const TitleWithPath = ({ currentPath, previousPaths }: TitleWithPathProps) => {
         );
       })}
       {/* Current Path */}
-      <div className="flex text-2xl items-center">
+      <div className="flex text-base md:text-2xl items-center">
         <ChevronLeft size={40} className="p-2" />
         {currentPath?.replace(/^\//, "")?.replace(/^(.)/, (match) =>
           match.toUpperCase()
