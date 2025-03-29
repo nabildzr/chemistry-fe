@@ -1,11 +1,9 @@
+import TitleWithPathProps from "@/types/titleWithPath";
 import { ChevronLeft } from "lucide-react";
 import Link from "next/link";
 import React from "react";
 
-type TitleWithPathProps = {
-  currentPath?: String;
-  previousPath?: String;
-};
+
 
 const TitleWithPath = ({ currentPath, previousPath }: TitleWithPathProps) => {
   const lowerCasePreviousPath = previousPath?.toLowerCase();

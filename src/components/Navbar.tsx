@@ -1,13 +1,12 @@
 "use client";
 
+import NavbarLayoutProps from "@/types/navbarLayout";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
-type NavbarLayoutProps = {
-  children: React.ReactNode;
-};
+
 
 const NavbarLayout = ({ children }: NavbarLayoutProps) => {
   const pathname = usePathname();

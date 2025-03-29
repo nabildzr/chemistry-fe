@@ -1,8 +1,6 @@
+import UserPageLayoutProps from "@/types/userPageLayout";
 import React from "react";
 
-type UserPageLayoutProps = {
-  children?: React.ReactNode;
-};
 
 const UserPageLayout = ({ children }: UserPageLayoutProps) => {
   return (

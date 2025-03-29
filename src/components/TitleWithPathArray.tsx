@@ -1,13 +1,11 @@
+import TitleWithPathArrayProps from "@/types/titleWithPaths";
 import { ChevronLeft } from "lucide-react";
 import Link from "next/link";
 import React from "react";
 
-type TitleWithPathProps = {
-  currentPath?: string;
-  previousPaths?: string[];
-};
 
-const TitleWithPath = ({ currentPath, previousPaths }: TitleWithPathProps) => {
+
+const TitleWithPath = ({ currentPath, previousPaths }: TitleWithPathArrayProps) => {
   return (
     <h1 className="t-3xl font-bold text-[#1b1b1b] mb-8 flex items-center">
       {/* Render semua previousPaths */}

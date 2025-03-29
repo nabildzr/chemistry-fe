@@ -1,11 +1,7 @@
+import GridCardProps from '@/types/gridCard'
 import React from 'react'
 
-type GridCardProps = {
-  children: React.ReactNode
-  padding?: string
-  className?: string
-  isFull?: boolean
-}
+
 
 const GridCard = ({children, className, padding = "p-6", isFull = false}: GridCardProps) => {
   return (
