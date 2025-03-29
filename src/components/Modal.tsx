@@ -36,9 +36,6 @@ const Modal = ({ isOpen, onClose, children, title }: ModalProps) => {
     };
   }, [onClose]);
 
-
-
-
   return (
     <div
       className={`fixed inset-0 z-91 flex items-center justify-center bg-[#0000007c] transition-opacity duration-300 ease-in-out ${
@@ -52,7 +49,8 @@ const Modal = ({ isOpen, onClose, children, title }: ModalProps) => {
         }`}
       >
         <div className="flex justify-between items-center">
-          <h2 className="text-3xl  font-bold ">{title}</h2>
+          {title && <h2 className="text-3xl font-bold">{title}</h2>}
+          {!title && <h2></h2>}
           <button
             onClick={onClose}
             className="cursor-pointer text-gray-500 hover:text-gray-800"
@@ -61,7 +59,7 @@ const Modal = ({ isOpen, onClose, children, title }: ModalProps) => {
           </button>
         </div>
 
-        <hr className="border-t border-gray-300 mt-4" />
+        {title && <hr className="border-t border-gray-300 mt-4" />}
         <div className="flex flex-col ">{children}</div>
       </div>
     </div>
