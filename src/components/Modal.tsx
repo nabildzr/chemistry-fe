@@ -5,6 +5,7 @@ import React, { useEffect, useState } from "react";
 const Modal = ({ isOpen, onClose, children, title }: ModalProps) => {
   const [isVisible, setIsVisible] = useState(false);
 
+  // modal in and out animation
   useEffect(() => {
     if (isOpen) {
       setIsVisible(true);
@@ -14,18 +15,31 @@ const Modal = ({ isOpen, onClose, children, title }: ModalProps) => {
     }
   }, [isOpen]);
 
+  // close modal when clicked over the content (modal)
   const handleOverlayClick = (e: React.MouseEvent<HTMLDivElement>) => {
     if (e.target === e.currentTarget) {
       onClose();
     }
   };
 
-  if (!isVisible) return null;
+  // esc close modal
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        onClose();
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [onClose]);
 
   return (
     <div
-      className={`fixed inset-0  z-91 flex items-center justify-center bg-[#0000007c] transition-opacity duration-300 ease-in-out ${
-        isOpen ? "opacity-100" : "opacity-0"
+      className={`fixed inset-0 z-50 flex items-center justify-center bg-[#0000007c] transition-opacity duration-300 ease-in-out ${
+        isOpen ? "opacity-100 visible" : "opacity-0 invisible"
       }`}
       onClick={handleOverlayClick}
     >

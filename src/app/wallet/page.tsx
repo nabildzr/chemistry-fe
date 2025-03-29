@@ -69,7 +69,7 @@ const Page = () => {
                 </p>
               </div>
 
-              {/* Option */}
+              {/* Option / desktop / more */}
               <div className="hidden sm:flex gap-2">
                 {/* deposit */}
                 <button
@@ -154,7 +154,7 @@ const Page = () => {
 
               {/* withdraw */}
               <button
-                onClick={() => setDepositModalOpen(true)}
+                onClick={() => setWithdrawModalOpen(true)}
                 className="flex flex-col items-center justify-center bg-gradient-to-t from-[#66ffc4] to-[#00D2D2] from-5% to-110% duration-500 p-3 group rounded-lg hover:rounded-2xl relative"
               >
                 <div className="relative w-[35px] h-[35px] mb-4">

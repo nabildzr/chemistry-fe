@@ -34,6 +34,23 @@ const NavbarLayout = ({ children }: NavbarLayoutProps) => {
     }
   }, [pathname]);
 
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      const navElement = document.querySelector(".sm\\:flex");
+      if (navElement && !navElement.contains(event.target as Node)) {
+        setShowNav(false);
+      }
+    };
+
+    if (showNav) {
+      document.addEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [showNav]);
+
   return (
     <>
       {showBar && (

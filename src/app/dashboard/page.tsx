@@ -36,7 +36,7 @@ export default function Dashboard() {
         <div className="grid md:grid-cols-2 gap-6">
           {/* Goal Card */}
           <Link href={"/goal"}>
-            <GridCard className="">
+            <GridCard className="" isFull={true}>
               <h2 className="text-[#1b1b1b] text-3xl font-bold mb-1">Goal</h2>
               <p className="text-gray-500 mb-6">Liburan ke Bira</p>
 
@@ -82,7 +82,7 @@ export default function Dashboard() {
 
           {/* Payment Card */}
           <Link href={"/wallet"}>
-            <GridCard className="">
+            <GridCard className="" isFull={true}>
               {/* title */}
               <h2 className="text-[#1b1b1b] h4 text-left">Sudah Bayar</h2>
 
