@@ -3,21 +3,26 @@ import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { Eye, EyeOff } from "lucide-react";
+import { API_URL } from "@/configs/config";
+import axios from "axios";
+import { LoginRequest } from "@/types/api/login/login";
+import { logout } from "@/services/api/auth";
 
 const slides = [
-    { image: "/assets/background/tongkonan.png", id: "01" },
-    { image: "/assets/background/komodo.png", id: "02" },
-    { image: "/assets/background/raja-ampat.png", id: "03" },
-    { image: "/assets/background/bromo.png", id: "04" },
+  { image: "/assets/background/tongkonan.png", id: "01" },
+  { image: "/assets/background/komodo.png", id: "02" },
+  { image: "/assets/background/raja-ampat.png", id: "03" },
+  { image: "/assets/background/bromo.png", id: "04" },
 ];
 
 function Login() {
   const router = useRouter();
-  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [error, setError] = useState("");
 
   useEffect(() => {
     document.body.style.overflow = "hidden";
@@ -38,20 +43,35 @@ function Login() {
     setCurrentSlide(index);
   };
 
-  const handleSubmit = (e: { preventDefault: () => void }) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setIsLoading(true);
+    setError("");
 
-    const credentials = {
-      admin: { username: "admin12345", password: "123456789", redirect: "/admin" },
-      siswa: { username: "siswa123", password: "123456789", redirect: "/dashboard" },
-    };
+    try {
+      console.log("request: ", "email: ", email, "pass:", password);
+      const response = await axios.post(`${API_URL}/api/login`, {
+        email,
+        password,
+      });
 
-    if (username === credentials.admin.username && password === credentials.admin.password) {
-      router.push(credentials.admin.redirect);
-    } else if (username === credentials.siswa.username && password === credentials.siswa.password) {
-      router.push(credentials.siswa.redirect);
-    } else {
-      alert("Invalid credentials. Please try again.");
+      console.log(response);
+
+      if (response.data.access_token) {
+        // Save Token in localStorage
+        localStorage.setItem("authToken", response.data.access_token);
+        // Save Token in Cookies
+        document.cookie = `auth-token=${response.data.access_token}; path=/;`;
+
+        // Use router.push for navigation
+        router.push("/dashboard");
+      }
+    } catch (err: any) {
+      setError(
+        err.response?.data?.message || "Login failed. Please try again."
+      );
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -79,7 +99,9 @@ function Login() {
         {/* Navigasi Manual */}
         <button
           className="absolute top-1/2 left-4 transform -translate-y-1/2 bg-white/30 p-3 rounded-full hover:bg-white/50"
-          onClick={() => goToSlide((currentSlide - 1 + slides.length) % slides.length)}
+          onClick={() =>
+            goToSlide((currentSlide - 1 + slides.length) % slides.length)
+          }
         >
           ❮
         </button>
@@ -123,13 +145,18 @@ function Login() {
               className="mx-auto"
             />
           </div>
+          {error && (
+            <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">
+              {error}
+            </div>
+          )}
           <form onSubmit={handleSubmit} className="space-y-6">
             <div>
               <input
                 type="text"
                 id="username"
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 className="w-full px-4 py-3 rounded-md bg-[#f6f7fa] border border-[#f6f7fa] focus:outline-none focus:ring-2 focus:ring-[#00e5c7]"
                 placeholder="Username"
                 required

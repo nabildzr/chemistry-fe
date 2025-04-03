@@ -1,12 +1,11 @@
 "use client";
 
+import { logout } from "@/services/api/auth";
 import NavbarLayoutProps from "@/types/navbarLayout";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-
-
 
 const NavbarLayout = ({ children }: NavbarLayoutProps) => {
   const pathname = usePathname();
@@ -50,6 +49,11 @@ const NavbarLayout = ({ children }: NavbarLayoutProps) => {
     };
   }, [showNav]);
 
+  const handleLogout = async () => {
+    logout();
+
+    window.location.href = "/";
+  };
   return (
     <>
       {showBar && (
@@ -113,17 +117,18 @@ const NavbarLayout = ({ children }: NavbarLayoutProps) => {
                     />
                   </div>
                 </Link>
-                <Link href={"/logout"} className="">
-                  <div className="transition-all duration-300 inline-flex items-center justify-center rounded-full hover:border-2 border-2 border-transparent hover:border-black p-1">
-                    <Image
-                      src="/assets/icon/logout-2.svg"
-                      alt="Logout"
-                      width={35}
-                      height={35}
-                      className=""
-                    />
-                  </div>
-                </Link>
+                <button
+                  onClick={handleLogout}
+                  className="cursor-pointer transition-all duration-300 inline-flex items-center justify-center rounded-full hover:border-2 border-2 border-transparent hover:border-black p-1"
+                >
+                  <Image
+                  src="/assets/icon/logout-2.svg"
+                  alt="Logout"
+                  width={35}
+                  height={35}
+                  className=""
+                  />
+                </button>
               </div>
             </div>
           </nav>
