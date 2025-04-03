@@ -39,7 +39,7 @@ export function middleware(request: NextRequest) {
   }
 
   if (!token && protectedRoutes.some((route) => url.startsWith(route))) {
-    return NextResponse.redirect(new URL("/not-found", request.url));
+    return NextResponse.redirect(new URL("/", request.url));
   }
 
   return NextResponse.next();
