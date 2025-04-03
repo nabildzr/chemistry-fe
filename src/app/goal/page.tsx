@@ -11,6 +11,7 @@ import { usePathname } from "next/navigation";
 import TitleWithPath from "@/components/TitleWithPath";
 import UserPageLayout from "@/components/userPageLayout";
 import Navbar from "@/components/Navbar";
+import GridCard from "@/components/grid-card";
 
 export default function Goal() {
   // goal circular progress
@@ -35,7 +36,7 @@ export default function Goal() {
 
         {/* Stats Cards */}
         <div className="gap-6 mb-6">
-          <div className="bg-white rounded-xl p-6 border border-gray-200 shadow-sm gap-10 flex flex-col">
+          <GridCard>
             <h2 className="text-[#1b1b1b] t-4xl flex justify-center  font-bold mb-1">
               Liburan ke Bira
             </h2>
@@ -91,7 +92,7 @@ export default function Goal() {
                 <span className="t-4xl font-bold">Rp. 2.500.000</span>
               </div>
             </div>
-          </div>
+          </GridCard>
         </div>
 
         {/* Stats Cards */}
@@ -99,7 +100,7 @@ export default function Goal() {
           {/* Goal Card */}
 
           {/* Start Card */}
-          <div className="bg-white  flex flex-col justify-start  rounded-xl p-14 border border-gray-200 shadow-sm ">
+          <GridCard className="bg-white  flex flex-col justify-start  rounded-xl p-14 border border-gray-200 shadow-sm ">
             <div className="flex  items-center text-6xl  font-bold text-[#525F7F]">
               <Calendar size={35} /> <span className="t-4xl px-6">Start</span>
             </div>
@@ -107,10 +108,10 @@ export default function Goal() {
             <div className=" mt-4">
               <p className="t-4xl font-bold ">1 Agustus, 2025</p>
             </div>
-          </div>
+          </GridCard>
 
           {/* Start Card */}
-          <div className="bg-white  flex flex-col justify-start  rounded-xl p-14 border border-gray-200 shadow-sm ">
+          <GridCard className="bg-white  flex flex-col justify-start  rounded-xl p-14 border border-gray-200 shadow-sm ">
             <div className="flex  items-center text-6xl  font-bold text-[#525F7F]">
               <Calendar size={35} /> <span className="t-4xl px-6">End</span>
             </div>
@@ -118,7 +119,7 @@ export default function Goal() {
             <div className=" mt-4">
               <p className="t-4xl font-bold ">1 Agustus, 2025</p>
             </div>
-          </div>
+          </GridCard>
         </div>
       </UserPageLayout>
     </>

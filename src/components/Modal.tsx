@@ -1,68 +1,60 @@
 import ModalProps from "@/types/modal";
 import { X } from "lucide-react";
-import React, { useEffect, useState } from "react";
+import React from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 const Modal = ({ isOpen, onClose, children, title }: ModalProps) => {
-  const [isVisible, setIsVisible] = useState(false);
-
-  // modal in and out animation
-  useEffect(() => {
-    if (isOpen) {
-      setIsVisible(true);
-    } else {
-      const timeout = setTimeout(() => setIsVisible(false), 300); // Durasi animasi out
-      return () => clearTimeout(timeout);
-    }
-  }, [isOpen]);
-
-  // close modal when clicked over the content (modal)
-  const handleOverlayClick = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (e.target === e.currentTarget) {
-      onClose();
-    }
+  // Variants untuk animasi modal
+  const modalVariants = {
+    hidden: { opacity: 0, scale: 0.95 }, // Keadaan awal (sembunyi)
+    visible: { opacity: 1, scale: 1 },  // Keadaan akhir (terlihat)
+    exit: { opacity: 0, scale: 0.95 }, // Keadaan keluar (sembunyi)
   };
 
-  // esc close modal
-  useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "Escape") {
-        onClose();
-      }
-    };
-
-    window.addEventListener("keydown", handleKeyDown);
-    return () => {
-      window.removeEventListener("keydown", handleKeyDown);
-    };
-  }, [onClose]);
+  const overlayVariants = {
+    hidden: { opacity: 0 }, // Keadaan awal (sembunyi)
+    visible: { opacity: 1 }, // Keadaan akhir (terlihat)
+    exit: { opacity: 0 },    // Keadaan keluar (sembunyi)
+  };
 
   return (
-    <div
-      className={`fixed inset-0 z-91 flex items-center justify-center bg-[#0000007c] transition-opacity duration-300 ease-in-out ${
-        isOpen ? "opacity-100 visible" : "opacity-0 invisible"
-      }`}
-      onClick={handleOverlayClick}
-    >
-      <div
-        className={`bg-white mx-6 rounded-xl shadow-lg p-6 w-full max-w-md relative transform transition-transform duration-300 ${
-          isOpen ? "scale-100" : "scale-95"
-        }`}
-      >
-        <div className="flex justify-between items-center">
-          {title && <h2 className="text-3xl font-bold">{title}</h2>}
-          {!title && <h2></h2>}
-          <button
-            onClick={onClose}
-            className="cursor-pointer text-gray-500 hover:text-gray-800"
+    <AnimatePresence>
+      {isOpen && (
+        <motion.div
+          className="fixed inset-0 z-91 flex items-center justify-center bg-[#0000007c] "
+          variants={overlayVariants}
+          initial="hidden"
+          animate="visible"
+          exit="exit"
+          transition={{ duration: 0.3 }}
+          onClick={(e) => {
+            if (e.target === e.currentTarget) onClose(); // Tutup modal jika klik di luar konten
+          }}
+        >
+          <motion.div
+            className="bg-white mx-6 rounded-xl shadow-lg p-6 w-full max-w-md relative"
+            variants={modalVariants}
+            initial="hidden"
+            animate="visible"
+            exit="exit"
+            transition={{ duration: 0.3 }}
           >
-            <X />
-          </button>
-        </div>
+            <div className="flex justify-between items-center">
+              {title && <h2 className="text-3xl font-bold">{title}</h2>}
+              <button
+                onClick={onClose}
+                className="cursor-pointer text-gray-500 hover:text-gray-800"
+              >
+                <X />
+              </button>
+            </div>
 
-        {title && <hr className="border-t border-gray-300 mt-4" />}
-        <div className="flex flex-col ">{children}</div>
-      </div>
-    </div>
+            {title && <hr className="border-t border-gray-300 mt-4" />}
+            <div className="flex flex-col">{children}</div>
+          </motion.div>
+        </motion.div>
+      )}
+    </AnimatePresence>
   );
 };
 
