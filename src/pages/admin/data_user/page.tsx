@@ -1,5 +1,4 @@
-"use client";
-import React, { useState } from "react";
+import  { useState } from "react";
 import ConfirmationModal from "./hapus_user"; // Import the delete modal component
 import { useNavigate } from "react-router";
 import TitleWithPath from "../../../components/TitleWithPath";

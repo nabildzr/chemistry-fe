@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Eye, EyeOff } from "lucide-react";
-import axios from "axios";
 import { useNavigate } from "react-router";
-import { API_URL } from "../configs/config";
 
 const slides = [
   { image: "/assets/background/tongkonan.png", id: "01" },

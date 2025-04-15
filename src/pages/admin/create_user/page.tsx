@@ -1,5 +1,3 @@
-'use client';
-import React from 'react';
 import { useNavigate } from 'react-router';
 import TitleWithPath from '../../../components/TitleWithPath';
 import UserPageLayout from '../../../components/userPageLayout';

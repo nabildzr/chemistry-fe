@@ -1,10 +1,9 @@
-"use client";
 
 import { CircularProgressbar } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 import { useState } from "react";
 import { useInView } from "react-intersection-observer";
-import { ArrowLeft, ArrowRightLeft, Calendar, ChevronLeft } from "lucide-react";
+import { Calendar} from "lucide-react";
 import UserPageLayout from "../../components/userPageLayout";
 import TitleWithPath from "../../components/TitleWithPath";
 import GridCard from "../../components/grid-card";
@@ -13,7 +12,7 @@ import { useLocation } from "react-router";
 export default function GoalPage() {
   // goal circular progress
   const [progress, setProgress] = useState(0);
-  const { ref, inView } = useInView({
+  const { ref } = useInView({
     triggerOnce: true,
     onChange: (inView) => {
       if (inView) {

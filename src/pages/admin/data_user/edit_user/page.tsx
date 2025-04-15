@@ -1,5 +1,3 @@
-'use client';
-import React from 'react';
 import { useNavigate } from 'react-router';
 import TitleWithPath from '../../../../components/TitleWithPath';
 import UserPageLayout from '../../../../components/userPageLayout';
@@ -7,9 +5,9 @@ import UserPageLayout from '../../../../components/userPageLayout';
 function Page() {
   const navigate = useNavigate();
 
-  const handleStelkbookClick = () => {
-    navigate('/admin'); // navigasi untuk perpustakaan homepage
-  };
+  // const handleStelkbookClick = () => {
+  //   navigate('/admin'); // navigasi untuk perpustakaan homepage
+  // };
 
   const handleSelesaiClick = () => {
     // Navigate to the target page after clicking 'Selesai'

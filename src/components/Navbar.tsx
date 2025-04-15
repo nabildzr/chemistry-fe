@@ -1,14 +1,14 @@
 
 import { useEffect, useState } from "react";
-import { Link, useLocation, useNavigate } from "react-router";
-import NavbarLayoutProps from "../types/navbarLayout";
+import { Link, useLocation } from "react-router";
+// import NavbarLayoutProps from "../types/navbarLayout";
 import { logout } from "../services/api/auth";
 
 const NavbarLayout = () => {
   const { pathname } = useLocation();
   const [showBar, setShowBar] = useState<Boolean>(false);
   const [showNav, setShowNav] = useState<Boolean>(false);
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const toggleBar = () => {
     setShowNav(!showNav);

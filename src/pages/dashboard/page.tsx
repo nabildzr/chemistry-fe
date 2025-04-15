@@ -1,5 +1,3 @@
-"use client";
-
 import { CircularProgressbar } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 import { useState } from "react";
@@ -7,11 +5,10 @@ import { useInView } from "react-intersection-observer";
 import UserPageLayout from "../../components/userPageLayout";
 import { Link } from "react-router";
 import GridCard from "../../components/grid-card";
-import NavbarLayout from "../../components/Navbar";
 
 export default function DashboardPage() {
   const [progress, setProgress] = useState(0);
-  const { ref, inView } = useInView({
+  const { ref } = useInView({
     triggerOnce: true,
     onChange: (inView) => {
       if (inView) {

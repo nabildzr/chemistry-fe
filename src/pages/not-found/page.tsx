@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
 // Dynamically import Lottie with SSR disabled
 import Lottie from "lottie-react";
@@ -6,7 +6,7 @@ import NotFound from "../../../public/animations/404.json";
 import { Link } from "react-router";
 
 const Page = () => {
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading] = useState(true);
 
   // Show nothing while checking authentication
   if (isLoading) {

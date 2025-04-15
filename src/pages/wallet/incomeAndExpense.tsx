@@ -1,5 +1,4 @@
 import { ChevronRight} from "lucide-react";
-import React from "react";
 import GridCard from "../../components/grid-card";
 import { Link } from "react-router";
 
